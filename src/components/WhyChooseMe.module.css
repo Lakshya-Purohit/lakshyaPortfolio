@@ -1,0 +1,108 @@
+/* ══ WhyChooseMe — Apple glass feature cards ══ */
+.section { padding: var(--section-pad) var(--content-pad); }
+.inner { max-width: var(--content-max); margin: 0 auto; }
+
+.header { margin-bottom: 3rem; }
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-top: 0.5rem;
+}
+
+.headingAccent { color: var(--blue); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 0.5px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 2rem 1.75rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s var(--ease-apple);
+  box-shadow: var(--glass-shadow);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glass-shadow-lg);
+  border-color: var(--blue-border);
+}
+
+.cardIcon {
+  font-size: 2.4rem;
+  display: block;
+  margin: 0 auto 1rem;
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.card:hover .cardIcon { transform: scale(1.12) translateY(-3px); }
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 0.55rem;
+}
+
+.cardDesc {
+  font-size: 0.80rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2rem;
+}
+
+.cardStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.18rem;
+  padding-top: 1rem;
+  border-top: 0.5px solid var(--border);
+}
+
+.statNum {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--blue);
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+}
+
+.cardGlow {
+  position: absolute;
+  bottom: -40px; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .cardGlow { opacity: 1; }
+
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 440px) { .grid { grid-template-columns: 1fr; } }

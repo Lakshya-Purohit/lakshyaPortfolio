@@ -1,0 +1,84 @@
+/* ══ AmbientBackground — Apple.com ambient — subtle, clean ══ */
+.container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Subtle gradient mesh — apple uses very restrained backgrounds */
+.meshGradient {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(0, 113, 227, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(0, 113, 227, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(0, 113, 227, 0.02) 0%, transparent 50%);
+  animation: meshDrift 35s ease-in-out infinite alternate;
+}
+
+[data-theme="dark"] .meshGradient {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(41, 151, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(41, 151, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(41, 151, 255, 0.03) 0%, transparent 50%);
+}
+
+@keyframes meshDrift {
+  0%   { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(5deg) scale(1.03); }
+}
+
+.aurora {
+  position: absolute;
+  inset: 0;
+}
+
+.auroraStreak {
+  position: absolute;
+  width: 55%;
+  height: 1px;
+  top: 25%;
+  left: -5%;
+  background: linear-gradient(90deg, transparent, rgba(0, 113, 227, 0.06), transparent);
+  animation: streakMove 22s ease-in-out infinite;
+}
+[data-theme="dark"] .auroraStreak {
+  background: linear-gradient(90deg, transparent, rgba(41, 151, 255, 0.08), transparent);
+}
+
+.streak2 {
+  top: 65%;
+  animation-delay: -8s;
+  animation-duration: 28s;
+  width: 45%;
+}
+
+.streak3 {
+  top: 85%;
+  left: 25%;
+  width: 35%;
+  animation-delay: -15s;
+  animation-duration: 18s;
+}
+
+@keyframes streakMove {
+  0%   { transform: translateX(0); opacity: 0.6; }
+  50%  { transform: translateX(15%); opacity: 1; }
+  100% { transform: translateX(0); opacity: 0.6; }
+}
+
+/* Apple.com uses a subtle dot/grid pattern at very low opacity */
+.dotGrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.06) 0.5px, transparent 0.5px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .dotGrid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 0.5px, transparent 0.5px);
+  opacity: 0.6;
+}

@@ -1,0 +1,312 @@
+/* ══ ProjectsShowcase — Apple liquid glass cards + modal ══ */
+
+.section { padding: var(--section-pad) var(--content-pad); }
+.inner { max-width: var(--content-max); margin: 0 auto; }
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-top: 0.5rem;
+}
+
+.headingAccent { color: var(--blue); }
+
+.headerSub {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 360px;
+  letter-spacing: -0.01em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* ─ Card ─ */
+.card {
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 0.5px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.35s var(--ease-apple);
+  box-shadow: var(--glass-shadow);
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--glass-shadow-lg);
+  border-color: var(--blue-border);
+}
+
+.cardImage {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.card:hover .cardImage img { transform: scale(1.04); }
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .cardOverlay { opacity: 1; }
+
+.viewBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.62rem 1.4rem;
+  background: rgba(255, 255, 255, 0.96);
+  color: #1d1d1f;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 1px 4px rgba(0,0,0,0.10);
+  border: none;
+  transform: translateY(8px) scale(0.94);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.2s ease;
+}
+
+.card:hover .viewBtn { transform: translateY(0) scale(1); box-shadow: 0 8px 32px rgba(0,0,0,0.22); }
+
+.cardBody { padding: 1.35rem 1.5rem; }
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.year {
+  font-size: 0.64rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  letter-spacing: -0.01em;
+}
+
+.roleBadge {
+  padding: 0.18rem 0.62rem;
+  background: var(--blue-soft);
+  border: 0.5px solid var(--blue-border);
+  color: var(--blue);
+  font-size: 0.58rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+}
+
+.cardDesc {
+  font-size: 0.80rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.85rem;
+}
+
+.cardTech { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+.techTag {
+  padding: 0.18rem 0.6rem;
+  background: var(--bg-secondary);
+  border: 0.5px solid var(--border);
+  color: var(--text-tertiary);
+  font-size: 0.6rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  transition: all 0.2s ease;
+}
+
+.techTag:hover {
+  background: var(--blue-soft);
+  border-color: var(--blue-border);
+  color: var(--blue);
+}
+
+.techMore {
+  padding: 0.18rem 0.6rem;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 0.6rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  border: 0.5px solid var(--blue-border);
+}
+
+/* ─ Modal — premium liquid glass ─ */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  background: rgba(0, 0, 0, 0.50);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal {
+  width: min(720px, 96vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(40px) saturate(200%) brightness(1.06);
+  -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(1.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.90);
+  border-radius: var(--radius-2xl);
+  box-shadow:
+    0 32px 100px rgba(0, 0, 0, 0.18),
+    0 8px 32px rgba(0, 0, 0, 0.10),
+    inset 0 1.5px 0 rgba(255, 255, 255, 1);
+  position: relative;
+}
+
+[data-theme="dark"] .modal {
+  background: rgba(28, 28, 30, 0.80);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+.modalClose {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  z-index: 10;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.06);
+  border: none;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.modalClose:hover {
+  background: rgba(0,0,0,0.12);
+  color: var(--text-primary);
+}
+
+.modalImage {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+}
+
+.modalImage img { width: 100%; height: 100%; object-fit: cover; }
+
+.modalBody { padding: 2rem; }
+
+.modalMeta {
+  display: flex; align-items: center; gap: 0.55rem;
+  margin-bottom: 0.7rem; flex-wrap: wrap;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+}
+
+.modalDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.4rem;
+}
+
+.modalTech { margin-bottom: 1.4rem; }
+
+.modalTechTitle {
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.65rem;
+}
+
+.modalTechList { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+.modalLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 1.4rem;
+  background: var(--blue);
+  color: white;
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  border-radius: var(--radius-full);
+  transition: all 0.25s ease;
+}
+
+.modalLink:hover {
+  background: var(--blue-hover);
+  transform: scale(1.02);
+  box-shadow: var(--shadow-blue);
+}
+
+.modalLinkPrivate {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  background: var(--bg-surface);
+  border: 0.5px solid var(--border);
+  color: var(--text-tertiary);
+  font-size: 0.76rem;
+  font-weight: 400;
+  border-radius: var(--radius-full);
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .header { flex-direction: column; align-items: flex-start; }
+  .modalBody { padding: 1.5rem; }
+}

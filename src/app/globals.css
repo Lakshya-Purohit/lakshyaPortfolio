@@ -1,42 +1,212 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ══════════════════════════════════════════════════
+   APPLE LIQUID GLASS DESIGN SYSTEM
+   Inspired by apple.com — SF Pro · Liquid Glass · System Blue
+   ══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─────────────────────────────────────────────────
+   LIGHT THEME — Apple.com White
+   ───────────────────────────────────────────────── */
+:root, [data-theme="light"] {
+
+  /* ── Page & Surface ── */
+  --bg-primary:          #f5f5f7;    /* apple.com page bg */
+  --bg-secondary:        #ffffff;
+  --bg-surface:          rgba(255, 255, 255, 0.72);
+  --bg-elevated:         rgba(255, 255, 255, 0.85);
+  --bg-card:             rgba(255, 255, 255, 0.60);
+  --bg-code:             #1c1c1e;
+
+  /* ── Liquid Glass ─ the signature look ── */
+  --glass:               rgba(255, 255, 255, 0.55);
+  --glass-border:        rgba(255, 255, 255, 0.80);
+  --glass-border-subtle: rgba(0,   0,   0,   0.06);
+  --glass-shadow:        0 8px 32px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04), inset 0 1.5px 0 rgba(255,255,255,0.85);
+  --glass-shadow-lg:     0 24px 64px rgba(0,0,0,0.10), 0 8px 24px rgba(0,0,0,0.06), inset 0 1.5px 0 rgba(255,255,255,0.90);
+  --glass-blur:          blur(28px) saturate(200%) brightness(1.04);
+
+  /* ── Apple System Colors ── */
+  --blue:                #0071e3;    /* apple primary CTA */
+  --blue-hover:          #0077ed;
+  --blue-dark:           #004499;
+  --blue-soft:           rgba(0, 113, 227, 0.08);
+  --blue-subtle:         rgba(0, 113, 227, 0.12);
+  --blue-border:         rgba(0, 113, 227, 0.20);
+  --blue-glow:           rgba(0, 113, 227, 0.15);
+
+  /* ── Typography ── */
+  --text-primary:        #1d1d1f;    /* apple headline black */
+  --text-secondary:      #6e6e73;    /* apple secondary text */
+  --text-tertiary:       #86868b;    /* apple tertiary */
+  --text-caption:        #aeaeb2;
+  --text-inverse:        #ffffff;
+  --text-blue:           #0071e3;    /* apple link color */
+
+  /* ── Borders ── */
+  --border:              rgba(0, 0, 0, 0.08);
+  --border-strong:       rgba(0, 0, 0, 0.14);
+  --border-glass:        rgba(255, 255, 255, 0.75);
+
+  /* ── Fonts ── */
+  --font-sans:           -apple-system, 'SF Pro Display', 'SF Pro Text', 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display:        -apple-system, 'SF Pro Display', 'Inter', BlinkMacSystemFont, sans-serif;
+  --font-mono:           'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+
+  /* ── Radius (Apple uses very rounded) ── */
+  --radius-xs:    6px;
+  --radius-sm:    10px;
+  --radius-md:    14px;
+  --radius-lg:    18px;
+  --radius-xl:    24px;
+  --radius-2xl:   32px;
+  --radius-full:  9999px;
+
+  /* ── Layout ── */
+  --section-pad:  clamp(5rem, 9vw, 9rem);
+  --content-max:  1200px;
+  --content-pad:  clamp(1.25rem, 4vw, 4rem);
+
+  /* ── Motion (Apple uses ease-in-out with spring) ── */
+  --ease-apple:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ── Shadows ── */
+  --shadow-sm:    0 1px 4px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:    0 4px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg:    0 12px 40px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-xl:    0 24px 80px rgba(0,0,0,0.13), 0 8px 24px rgba(0,0,0,0.08);
+  --shadow-blue:  0 4px 24px rgba(0, 113, 227, 0.20);
 }
 
-html,
+/* ─────────────────────────────────────────────────
+   DARK THEME — Apple Dark (like mac dark mode)
+   ───────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-primary:          #000000;    /* pure black like Apple TV + pages */
+  --bg-secondary:        #1c1c1e;
+  --bg-surface:          rgba(28, 28, 30, 0.80);
+  --bg-elevated:         rgba(44, 44, 46, 0.85);
+  --bg-card:             rgba(28, 28, 30, 0.65);
+  --bg-code:             #000000;
+
+  /* liquid glass dark */
+  --glass:               rgba(28, 28, 30, 0.55);
+  --glass-border:        rgba(255, 255, 255, 0.10);
+  --glass-border-subtle: rgba(255, 255, 255, 0.06);
+  --glass-shadow:        0 8px 32px rgba(0,0,0,0.40), 0 2px 8px rgba(0,0,0,0.30), inset 0 1.5px 0 rgba(255,255,255,0.06);
+  --glass-shadow-lg:     0 24px 64px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.40), inset 0 1.5px 0 rgba(255,255,255,0.08);
+
+  /* Apple dark blue */
+  --blue:                #2997ff;    /* apple blue in dark mode */
+  --blue-hover:          #409cff;
+  --blue-dark:           #1a78e8;
+  --blue-soft:           rgba(41, 151, 255, 0.10);
+  --blue-subtle:         rgba(41, 151, 255, 0.14);
+  --blue-border:         rgba(41, 151, 255, 0.22);
+  --blue-glow:           rgba(41, 151, 255, 0.18);
+
+  --text-primary:        #f5f5f7;
+  --text-secondary:      #86868b;
+  --text-tertiary:       #6e6e73;
+  --text-caption:        #48484a;
+  --text-inverse:        #1d1d1f;
+  --text-blue:           #2997ff;
+
+  --border:              rgba(255, 255, 255, 0.08);
+  --border-strong:       rgba(255, 255, 255, 0.13);
+  --border-glass:        rgba(255, 255, 255, 0.10);
+
+  --shadow-sm:    0 1px 4px rgba(0,0,0,0.35);
+  --shadow-md:    0 4px 20px rgba(0,0,0,0.45);
+  --shadow-lg:    0 12px 40px rgba(0,0,0,0.55);
+  --shadow-xl:    0 24px 80px rgba(0,0,0,0.65);
+  --shadow-blue:  0 4px 24px rgba(41, 151, 255, 0.25);
+}
+
+/* ─────────────────────────────────────────────────
+   BASE RESET
+   ───────────────────────────────────────────────── */
+::selection { background: var(--blue); color: white; }
+
+html { scroll-behavior: auto; overflow-x: hidden; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
 body {
-  max-width: 100vw;
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+  line-height: 1.6;
+  font-size: 17px;   /* Apple body size */
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+@media (hover: none), (pointer: coarse) { body { cursor: default; } }
+a, button { cursor: none; }
+@media (hover: none), (pointer: coarse) { a, button { cursor: pointer; } }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { background: none; border: none; cursor: pointer; color: inherit; font: inherit; }
+
+/* ── Section Label ── */
+.section-label {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--blue);
+  margin-bottom: 0.6rem;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* ── Scrollbar (Apple thin style) ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+
+/* ── Mobile Disclaimer ── */
+.mobileDisclaimer {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10001;
+  padding: 0.55rem 1rem;
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  text-align: center;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.mobileDisclaimer button {
+  margin-left: 0.75rem;
+  background: var(--blue);
+  border: none;
+  color: white;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mobileDisclaimer { display: flex; align-items: center; justify-content: center; }
 }
