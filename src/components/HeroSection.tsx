@@ -36,7 +36,7 @@ export default function HeroSection() {
                     <div className={styles.imageWrapper}>
                         <div className={styles.imageFrame}>
                             <img
-                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format"
+                                src="/profile.jpg"
                                 alt="Lakshya Purohit"
                                 className={styles.profileImg}
                             />
