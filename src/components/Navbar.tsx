@@ -34,8 +34,7 @@ export default function Navbar() {
         <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
             <div className={styles.inner}>
                 <a href="#" className={styles.logo}>
-                    <span className={styles.logoAccent}>L</span>P
-                    <span className={styles.logoDot} />
+                    LP
                 </a>
 
                 <nav className={`${styles.nav} ${mobileOpen ? styles.navOpen : ''}`}>

@@ -41,6 +41,16 @@ function MobileDisclaimer() {
   );
 }
 
+function ScrollRestoration() {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
+    }
+  }, []);
+  return null;
+}
+
 export default function Home() {
   return (
     <ThemeProvider>
@@ -48,6 +58,7 @@ export default function Home() {
         <CustomCursor />
         <PeekingCharacter />
         <ScrollRevealInit />
+        <ScrollRestoration />
         <AmbientBackground />
         <AIChatbot />
         <SearchPalette />
