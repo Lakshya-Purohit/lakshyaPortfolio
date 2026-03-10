@@ -80,6 +80,7 @@ export const metadata: Metadata = {
   category: "technology",
   other: {
     "google-site-verification": "",
+    "msvalidate.01": "F9CFDFBDB2B8E94DA2E3D833280C1D0E",
   },
 };
 
