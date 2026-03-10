@@ -71,13 +71,7 @@ export default function ProjectsShowcase() {
     return (
         <section className={styles.section} id="projects">
             <div className={styles.inner}>
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className={styles.header}
-                >
+                <div className={styles.header}>
                     <div>
                         <span className="section-label">Portfolio</span>
                         <h2 className={styles.heading}>
@@ -88,19 +82,17 @@ export default function ProjectsShowcase() {
                         Each project represents a unique challenge, solved with cutting-edge technology
                         and meticulous attention to detail.
                     </p>
-                </motion.div>
+                </div>
 
                 <div className={styles.grid}>
                     {projects.map((project, idx) => (
-                        <motion.div
+                        <div
                             key={project.id}
                             className={styles.card}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            viewport={{ once: true }}
                             onClick={() => setSelectedProject(project)}
                             data-cursor="read-more"
+                            data-reveal
+                            data-reveal-delay={idx * 100}
                         >
                             <div className={styles.cardImage}>
                                 <img src={project.image} alt={project.title} />
@@ -130,7 +122,7 @@ export default function ProjectsShowcase() {
                                     )}
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

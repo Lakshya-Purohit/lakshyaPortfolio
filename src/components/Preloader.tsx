@@ -74,7 +74,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
 
   // Auto-show "ready" after a brief delay
   useEffect(() => {
-    const timer = setTimeout(() => setPhase('ready'), 2500);
+    const timer = setTimeout(() => setPhase('ready'), 500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -145,14 +145,14 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     setTimeout(() => {
       setPhase('done');
       onComplete();
-    }, 1200);
+    }, 800);
   }, [phase, onComplete]);
 
   // Input listeners
   useEffect(() => {
     if (phase !== 'ready') return;
 
-    const handleWheel = (e: WheelEvent) => { if (e.deltaY > 10) enter(); };
+    const handleWheel = (e: WheelEvent) => { if (e.deltaY > 2) enter(); };
     const handleTouchStart = (e: TouchEvent) => { (containerRef.current as any).__touchY = e.touches[0].clientY; };
     const handleTouchEnd = (e: TouchEvent) => {
       const startY = (containerRef.current as any)?.__touchY ?? 0;

@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import styles from './ContactSection.module.css';
 
 const socials = [
@@ -41,12 +40,7 @@ export default function ContactSection() {
         <section className={styles.section} id="contact">
             <div className={styles.inner}>
                 <div className={styles.content}>
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
+                    <div>
                         <span className="section-label">Get in Touch</span>
                         <h2 className={styles.heading}>
                             Let&apos;s build something <span className={styles.headingAccent}>amazing</span> together
@@ -55,26 +49,16 @@ export default function ContactSection() {
                             Have a project in mind? I&apos;m always open to discussing new opportunities,
                             creative ideas, or just a chat about technology.
                         </p>
-                    </motion.div>
+                    </div>
 
-                    <motion.a
+                    <a
                         href="mailto:lakshya.purohit.2105@gmail.com"
                         className={styles.emailLink}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        viewport={{ once: true }}
                     >
                         lakshya.purohit.2105@gmail.com
-                    </motion.a>
+                    </a>
 
-                    <motion.div
-                        className={styles.contactInfo}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        viewport={{ once: true }}
-                    >
+                    <div className={styles.contactInfo}>
                         <a href="tel:+918302457751" className={styles.phone}>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -88,15 +72,9 @@ export default function ContactSection() {
                             </svg>
                             Based in Jaipur, India
                         </span>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        className={styles.socials}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        viewport={{ once: true }}
-                    >
+                    <div className={styles.socials}>
                         {socials.map((social) => (
                             <a
                                 key={social.label}
@@ -112,7 +90,7 @@ export default function ContactSection() {
                                 </svg>
                             </a>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
 
                 <div className={styles.decorBg}>

@@ -9,35 +9,14 @@
   
   /* POSITION: Bottom Left Corner */
   left: 2rem;
-  bottom: 4.5rem; /* Offset from bottom to not clash with potential taskbars/hints */
+  bottom: 4.5rem;
   
-  /* 3D FEEL: Perspective + Initial state */
+  /* 3D FEEL */
   perspective: 1000px;
   transform: translateZ(20px) scale(1);
   opacity: 1;
   
-  transition: 
-    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
-    left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
-    opacity 0.4s ease,
-    filter 0.4s ease;
-  
   filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.15));
-}
-
-/* ── BEHAVIOR: RUNNING AWAY (Scroll) ── */
-.character.scrolling {
-  left: -120px;
-  transform: translateZ(0) scale(0.8) rotateY(-20deg);
-  opacity: 0;
-}
-
-/* ── BEHAVIOR: HIDING (Proximity/Hover) ── */
-.character.hiding {
-  left: -50px;
-  transform: translateY(40px) scale(0.9) rotate3d(1, 1, 1, 15deg);
-  opacity: 0;
-  filter: blur(4px) brightness(0.8);
 }
 
 /* ── INTERNALS ── */
@@ -54,7 +33,7 @@
   50% { transform: translateY(-4px) rotateX(5deg); }
 }
 
-.character:not(.scrolling):not(.hiding) .svg {
+.character .svg {
   animation: meshBob 3.5s ease-in-out infinite;
 }
 
@@ -70,4 +49,10 @@
 /* Subtle glowing eyes in the dark */
 [data-theme="dark"] .eyeWhite {
   fill: #f5f5f7;
+}
+
+@media (max-width: 768px) {
+  .character {
+    display: none !important;
+  }
 }

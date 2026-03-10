@@ -7,36 +7,24 @@ import styles from './PeekingCharacter.module.css';
  * 3D Peeking Character — lives in the bottom-left corner.
  * 
  * Behaviour:
- *  - IDLE: Visible at bottom-left corner, eyes follow cursor.
- *  - SCROLL: Slides LEFT (off-screen) when scrolling down.
- *  - PROXIMITY/HOVER: Slides LEFT/DOWN to hide when cursor is too close.
+ *  - Always visible at bottom-left corner, eyes follow cursor.
  */
-
-const HIDE_THRESHOLD = 160; // Distance in px to trigger hiding
 
 export default function PeekingCharacter() {
     const charRef = useRef<HTMLDivElement>(null);
     const mousePos = useRef({ x: 0, y: 0 });
-    const [isScrolling, setIsScrolling] = useState(false);
-    const [isHiding, setIsHiding] = useState(false);
     const [eye, setEye] = useState({ x: 0, y: 0 });
-    const scrollTm = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
     const rafRef = useRef<number>(0);
 
-    /* ─── Eye tracking & Proximity Loop ──────── */
+    /* ─── Eye tracking Loop ──────── */
     const update = useCallback(() => {
         if (charRef.current) {
             const rect = charRef.current.getBoundingClientRect();
-            // Character center (approx center of head)
             const cx = rect.left + rect.width / 2;
-            const cy = rect.top + 40; // Head is towards the top of the container
+            const cy = rect.top + 40;
 
             const dx = mousePos.current.x - cx;
             const dy = mousePos.current.y - cy;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            // Proximity check
-            setIsHiding(dist < HIDE_THRESHOLD);
 
             // Normalise pupils
             const nx = Math.max(-1, Math.min(1, dx / 350));
@@ -55,23 +43,12 @@ export default function PeekingCharacter() {
             mousePos.current = { x: e.clientX, y: e.clientY };
         };
 
-        const handleScroll = () => {
-            setIsScrolling(true);
-            clearTimeout(scrollTm.current);
-            scrollTm.current = setTimeout(() => {
-                setIsScrolling(false);
-            }, 600); // Wait bit after last scroll to show up again
-        };
-
         window.addEventListener('mousemove', handleMouseMove, { passive: true });
-        window.addEventListener('scroll', handleScroll, { passive: true });
         rafRef.current = requestAnimationFrame(update);
 
         return () => {
             cancelAnimationFrame(rafRef.current);
-            clearTimeout(scrollTm.current);
             window.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('scroll', handleScroll);
         };
     }, [update]);
 
@@ -82,7 +59,7 @@ export default function PeekingCharacter() {
     return (
         <div
             ref={charRef}
-            className={`${styles.character} ${isScrolling ? styles.scrolling : ''} ${isHiding ? styles.hiding : ''}`}
+            className={styles.character}
             aria-hidden="true"
         >
             <svg

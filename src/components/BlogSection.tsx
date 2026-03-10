@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import styles from './BlogSection.module.css';
 
 const blogPosts = [
@@ -34,13 +33,7 @@ export default function BlogSection() {
     return (
         <section className={styles.section} id="blog">
             <div className={styles.inner}>
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className={styles.header}
-                >
+                <div className={styles.header}>
                     <div>
                         <span className="section-label">Blog</span>
                         <h2 className={styles.heading}>
@@ -50,18 +43,16 @@ export default function BlogSection() {
                     <p className={styles.headerSub}>
                         Writing about software architecture, best practices, and lessons learned.
                     </p>
-                </motion.div>
+                </div>
 
                 <div className={styles.grid}>
                     {blogPosts.map((post, idx) => (
-                        <motion.article
+                        <article
                             key={idx}
                             className={styles.card}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: idx * 0.1 }}
-                            viewport={{ once: true }}
                             data-cursor="read-more"
+                            data-reveal
+                            data-reveal-delay={idx * 100}
                         >
                             <div className={styles.cardTop}>
                                 <span className={styles.category}>{post.category}</span>
@@ -79,7 +70,7 @@ export default function BlogSection() {
                                     <path d="M5 12h14M12 5l7 7-7 7" />
                                 </svg>
                             </div>
-                        </motion.article>
+                        </article>
                     ))}
                 </div>
             </div>

@@ -1,0 +1,123 @@
+/* ══ SkillsOrbit — Bouncing skill balls ══ */
+
+.section {
+  padding: var(--section-pad) var(--content-pad);
+  overflow: hidden;
+}
+
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-top: 0.5rem;
+}
+
+.headingAccent { color: var(--blue); }
+
+/* Screen-reader only — visible to crawlers & AI */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ─ Arena ─ */
+.arena {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  border-radius: var(--radius-2xl);
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 0.5px solid var(--glass-border);
+  box-shadow: var(--glass-shadow-lg);
+  overflow: hidden;
+  cursor: none;
+}
+
+/* ─ Skill Ball ─ */
+.ball {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 0.5px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  user-select: none;
+  pointer-events: none;
+  transition: box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.ballInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  text-align: center;
+}
+
+.ballIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.ballLabel {
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Glow effect for balls near cursor */
+.ballGlow {
+  box-shadow:
+    var(--glass-shadow),
+    0 0 20px var(--blue-glow),
+    0 0 40px var(--blue-glow);
+}
+
+@media (max-width: 768px) {
+  .section { padding: var(--section-pad) 1rem; }
+  .arena { height: 320px; }
+  .ballIcon { font-size: 1.2rem; }
+  .ballLabel { font-size: 0.44rem; }
+  .heading { font-size: clamp(1.6rem, 3.5vw, 2.5rem); }
+}
+
+@media (max-width: 480px) {
+  .arena { height: 260px; }
+  .ballIcon { font-size: 1rem; }
+  .ballLabel { font-size: 0.4rem; }
+  .header { margin-bottom: 1.5rem; }
+}
+
+@media (max-width: 400px) {
+  .arena { height: 220px; }
+  .heading { font-size: 1.4rem; }
+}

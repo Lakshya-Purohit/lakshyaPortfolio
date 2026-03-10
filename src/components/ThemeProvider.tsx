@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 
 type Theme = 'dark' | 'light';
 
@@ -14,13 +14,30 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-    // Always start as light — no localStorage persistence
     const [theme, setTheme] = useState<Theme>('light');
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        const stored = localStorage.getItem('theme') as Theme | null;
+        if (stored) {
+            setTheme(stored);
+            document.documentElement.setAttribute('data-theme', stored);
+        } else {
+            // Check system preference
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) {
+                setTheme('dark');
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        }
+    }, []);
 
     const toggle = useCallback(() => {
         setTheme((prev) => {
             const next = prev === 'dark' ? 'light' : 'dark';
             document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
             return next;
         });
     }, []);

@@ -44,18 +44,12 @@ export default function TestimonialsSection() {
     return (
         <section className={styles.section} id="testimonials" ref={sectionRef}>
             <div className={styles.inner}>
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className={styles.header}
-                >
+                <div className={styles.header}>
                     <span className="section-label">Testimonials</span>
                     <h2 className={styles.heading}>
                         What people <span className={styles.headingAccent}>say about me</span>
                     </h2>
-                </motion.div>
+                </div>
             </div>
 
             <div className={styles.sliderContainer}>

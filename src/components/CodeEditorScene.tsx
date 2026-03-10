@@ -65,7 +65,7 @@ export default function CodeEditorScene() {
         const trigger = ScrollTrigger.create({
             trigger: sectionRef.current,
             start: 'top top',
-            end: `+=${window.innerHeight * 2}`,
+            end: `+=${window.innerHeight * 0.8}`,
             pin: pinWrapRef.current,
             pinSpacing: true,
             scrub: 0.5,

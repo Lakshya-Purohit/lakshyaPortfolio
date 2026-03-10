@@ -244,3 +244,7 @@
 [data-theme="dark"] .hintText {
   color: #86868b;
 }
+
+@media (max-width: 768px) {
+  .globalHint { display: none !important; }
+}

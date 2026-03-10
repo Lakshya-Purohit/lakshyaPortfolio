@@ -8,7 +8,6 @@ const roles = [
     'Software Developer',
     'Backend Architect',
     'System Engineer',
-    'Video Solutions Expert',
 ];
 
 export default function HeroSection() {
@@ -26,13 +25,7 @@ export default function HeroSection() {
         <section className={styles.hero} id="about" ref={sectionRef}>
             <div className={styles.heroInner}>
                 {/* Left — Image */}
-                <motion.div
-                    className={styles.imageCol}
-                    initial={{ opacity: 0, x: -60 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                    viewport={{ once: true }}
-                >
+                <div className={styles.imageCol}>
                     <div className={styles.imageWrapper}>
                         <div className={styles.imageFrame}>
                             <img
@@ -51,30 +44,18 @@ export default function HeroSection() {
                         <span className={styles.statusDot} />
                         Available for work
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Right — Content */}
                 <div className={styles.contentCol}>
-                    <motion.div
-                        className={styles.greeting}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
+                    <div className={styles.greeting}>
                         Hi there! I am
-                    </motion.div>
+                    </div>
 
-                    <motion.h1
-                        className={styles.name}
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        viewport={{ once: true }}
-                    >
+                    <h1 className={styles.name}>
                         <span className={styles.firstName}>Lakshya</span>
                         <span className={styles.lastName}>Purohit<span className={styles.dot}>.</span></span>
-                    </motion.h1>
+                    </h1>
 
                     {/* Rotating roles */}
                     <div className={styles.roleBox}>
@@ -91,26 +72,14 @@ export default function HeroSection() {
                         ))}
                     </div>
 
-                    <motion.p
-                        className={styles.bio}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.5 }}
-                        viewport={{ once: true }}
-                    >
+                    <p className={styles.bio}>
                         I specialize in building <strong>scalable, high-performance</strong> enterprise
                         systems. Passionate about complex backend architectures, real-time communication,
                         and database optimization — engineering solutions that handle thousands of
                         concurrent users.
-                    </motion.p>
+                    </p>
 
-                    <motion.div
-                        className={styles.ctaRow}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.6 }}
-                        viewport={{ once: true }}
-                    >
+                    <div className={styles.ctaRow}>
                         <a href="mailto:lakshya.purohit.2105@gmail.com" className={styles.ctaPrimary}>
                             Let&apos;s Collaborate
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -125,17 +94,11 @@ export default function HeroSection() {
                         >
                             Download Resume
                         </a>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        className={styles.stats}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.7 }}
-                        viewport={{ once: true }}
-                    >
+                    <div className={styles.stats}>
                         <div className={styles.stat}>
-                            <span className={styles.statNum}>3+</span>
+                            <span className={styles.statNum}>2+</span>
                             <span className={styles.statLabel}>Years Experience</span>
                         </div>
                         <div className={styles.statDivider} />
@@ -148,7 +111,7 @@ export default function HeroSection() {
                             <span className={styles.statNum}>70%</span>
                             <span className={styles.statLabel}>Performance Gain</span>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

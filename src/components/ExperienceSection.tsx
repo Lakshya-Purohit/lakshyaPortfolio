@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import styles from './ExperienceSection.module.css';
 
 const experiences = [
@@ -55,29 +54,21 @@ export default function ExperienceSection() {
     return (
         <section className={styles.section} id="experience">
             <div className={styles.inner}>
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                >
+                <div>
                     <span className="section-label">Career Timeline</span>
                     <h2 className={styles.heading}>
-                        <span className={styles.headingNum}>3+</span> years of building
+                        <span className={styles.headingNum}>2+</span> years of building
                         <span className={styles.headingAccent}> scalable systems</span>
                     </h2>
-                </motion.div>
+                </div>
 
                 <div className={styles.timeline}>
                     {experiences.map((exp, idx) => (
-                        <motion.div
+                        <div
                             key={idx}
                             className={styles.card}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            viewport={{ once: true }}
-                            data-cursor="read-more"
+                            data-reveal
+                            data-reveal-delay={idx * 100}
                         >
                             <div className={styles.cardHeader}>
                                 <div className={styles.period}>
@@ -104,7 +95,7 @@ export default function ExperienceSection() {
                             </div>
 
                             <div className={styles.cardNum}>0{idx + 1}</div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>

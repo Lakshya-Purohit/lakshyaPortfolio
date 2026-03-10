@@ -9,7 +9,7 @@
 
 .scene {
   position: relative;
-  height: 300vh;
+  height: 180vh;
   background: var(--bg-primary);
 }
 
@@ -121,7 +121,7 @@
 /* ─ Editor Body ─ */
 .editorBody {
   display: flex;
-  height: clamp(280px, 42vh, 400px);
+  height: clamp(340px, 52vh, 520px);
   background: #111111;
 }
 

@@ -17,11 +17,11 @@
 :root, [data-theme="light"] {
 
   /* ── Page & Surface ── */
-  --bg-primary:          #f5f5f7;    /* apple.com page bg */
-  --bg-secondary:        #ffffff;
-  --bg-surface:          rgba(255, 255, 255, 0.72);
-  --bg-elevated:         rgba(255, 255, 255, 0.85);
-  --bg-card:             rgba(255, 255, 255, 0.60);
+  --bg-primary:          #fbfaf7;    /* subtle warm white */
+  --bg-secondary:        #fefdfb;
+  --bg-surface:          rgba(255, 254, 252, 0.72);
+  --bg-elevated:         rgba(255, 254, 252, 0.85);
+  --bg-card:             rgba(255, 254, 252, 0.60);
   --bg-code:             #1c1c1e;
 
   /* ── Liquid Glass ─ the signature look ── */
@@ -91,11 +91,11 @@
    DARK THEME — Apple Dark (like mac dark mode)
    ───────────────────────────────────────────────── */
 [data-theme="dark"] {
-  --bg-primary:          #000000;    /* pure black like Apple TV + pages */
-  --bg-secondary:        #1c1c1e;
-  --bg-surface:          rgba(28, 28, 30, 0.80);
-  --bg-elevated:         rgba(44, 44, 46, 0.85);
-  --bg-card:             rgba(28, 28, 30, 0.65);
+  --bg-primary:          #1a1a1d;    /* soft dark grey */
+  --bg-secondary:        #232326;
+  --bg-surface:          rgba(35, 35, 38, 0.80);
+  --bg-elevated:         rgba(50, 50, 54, 0.85);
+  --bg-card:             rgba(35, 35, 38, 0.65);
   --bg-code:             #000000;
 
   /* liquid glass dark */
@@ -209,4 +209,17 @@ button { background: none; border: none; cursor: pointer; color: inherit; font: 
 
 @media (max-width: 768px) {
   .mobileDisclaimer { display: flex; align-items: center; justify-content: center; }
+}
+
+/* ── Scroll Reveal — slide-up cards ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
 }
