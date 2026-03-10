@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://lakshyapurohit.dev/sitemap.xml',
+    sitemap: 'https://www.lakhsyapurohit.online/sitemap.xml',
   };
 }

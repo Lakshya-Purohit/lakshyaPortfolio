@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://lakshyapurohit.dev'),
+  metadataBase: new URL('https://www.lakhsyapurohit.online'),
   title: {
     default: "Lakshya Purohit | Software Developer & System Architect — Portfolio",
     template: "%s | Lakshya Purohit",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     "hire software developer India",
     "best developer portfolio",
   ],
-  authors: [{ name: "Lakshya Purohit", url: "https://lakshyapurohit.dev" }],
+  authors: [{ name: "Lakshya Purohit", url: "https://www.lakhsyapurohit.online" }],
   creator: "Lakshya Purohit",
   publisher: "Lakshya Purohit",
   robots: {
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     title: "Lakshya Purohit | Software Developer & System Architect",
     description:
       "Software Developer engineering scalable backend systems, real-time video, and enterprise solutions. Expert in ASP.NET Core, Angular, WebRTC, PostgreSQL, Python, Docker. Explore projects, experience, and certifications.",
-    url: "https://lakshyapurohit.dev",
+    url: "https://www.lakhsyapurohit.online",
   },
   twitter: {
     card: "summary_large_image",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     creator: "@lakshyapurohit",
   },
   alternates: {
-    canonical: "https://lakshyapurohit.dev",
+    canonical: "https://www.lakhsyapurohit.online",
   },
   category: "technology",
   other: {
@@ -88,13 +88,13 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "@id": "https://lakshyapurohit.dev/#person",
+  "@id": "https://www.lakhsyapurohit.online/#person",
   name: "Lakshya Purohit",
-  url: "https://lakshyapurohit.dev",
+  url: "https://www.lakhsyapurohit.online",
   jobTitle: "Software Developer & System Architect",
   description:
     "Lakshya Purohit is a Software Developer and System Architect from Jaipur, India, specializing in scalable backend systems, real-time communication (WebRTC), enterprise solutions, and full-stack development with ASP.NET Core, Angular, Python, PostgreSQL, and Docker.",
-  image: "https://lakshyapurohit.dev/profile.jpg",
+  image: "https://www.lakhsyapurohit.online/profile.jpg",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Jaipur",
@@ -132,7 +132,7 @@ const personJsonLd = {
   ],
   mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": "https://lakshyapurohit.dev",
+    "@id": "https://www.lakhsyapurohit.online",
   },
 };
 
@@ -140,13 +140,13 @@ const personJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://lakshyapurohit.dev/#website",
-  url: "https://lakshyapurohit.dev",
+  "@id": "https://www.lakhsyapurohit.online/#website",
+  url: "https://www.lakhsyapurohit.online",
   name: "Lakshya Purohit — Software Developer Portfolio",
   description:
     "Portfolio website of Lakshya Purohit, showcasing projects, experience, technical skills, and certifications in software development and system architecture.",
   publisher: {
-    "@id": "https://lakshyapurohit.dev/#person",
+    "@id": "https://www.lakhsyapurohit.online/#person",
   },
 };
 
