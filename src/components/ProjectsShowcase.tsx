@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import styles from './ProjectsShowcase.module.css';
 
 interface Project {
@@ -95,7 +96,13 @@ export default function ProjectsShowcase() {
                             data-reveal-delay={idx * 100}
                         >
                             <div className={styles.cardImage}>
-                                <img src={project.image} alt={project.title} />
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    style={{ objectFit: 'cover' }}
+                                />
                                 <div className={styles.cardOverlay}>
                                     <span className={styles.viewBtn}>
                                         View Details
@@ -152,7 +159,13 @@ export default function ProjectsShowcase() {
                             </button>
 
                             <div className={styles.modalImage}>
-                                <img src={selectedProject.image} alt={selectedProject.title} />
+                                <Image
+                                    src={selectedProject.image}
+                                    alt={selectedProject.title}
+                                    fill
+                                    sizes="(max-width: 1200px) 100vw, 1200px"
+                                    style={{ objectFit: 'cover' }}
+                                />
                             </div>
 
                             <div className={styles.modalBody}>

@@ -3,8 +3,6 @@
    Inspired by apple.com — SF Pro · Liquid Glass · System Blue
    ══════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap');
-
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -55,8 +53,8 @@
   --border-glass:        rgba(255, 255, 255, 0.75);
 
   /* ── Fonts ── */
-  --font-sans:           -apple-system, 'SF Pro Display', 'SF Pro Text', 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display:        -apple-system, 'SF Pro Display', 'Inter', BlinkMacSystemFont, sans-serif;
+  --font-sans:           var(--font-inter), -apple-system, 'SF Pro Display', 'SF Pro Text', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display:        var(--font-inter), -apple-system, 'SF Pro Display', BlinkMacSystemFont, sans-serif;
   --font-mono:           'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
 
   /* ── Radius (Apple uses very rounded) ── */

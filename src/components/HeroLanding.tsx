@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import styles from './HeroLanding.module.css';
 
 /* ═══════════════════════════════════════════════
@@ -143,10 +144,13 @@ export default function HeroLanding() {
                     <div className={styles.topRow}>
                         <div className={styles.imageWrapper}>
                             <div className={styles.imageFrame}>
-                                <img
+                                <Image
                                     src="/profile.jpg"
                                     alt="Lakshya Purohit"
                                     className={styles.profileImg}
+                                    width={400}
+                                    height={400}
+                                    priority
                                 />
                                 <div className={styles.imageOverlay} />
                             </div>
