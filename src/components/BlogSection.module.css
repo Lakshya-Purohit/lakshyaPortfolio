@@ -135,6 +135,33 @@
 
 .readMore:hover { gap: 0.65rem; }
 
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--blue);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: gap 0.25s var(--ease-spring);
+}
+
+.viewAll:hover { gap: 0.65rem; }
+
 @media (max-width: 600px) {
   .grid { grid-template-columns: 1fr; }
   .header { flex-direction: column; align-items: flex-start; }

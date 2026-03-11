@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useTheme } from '@/components/ThemeProvider';
 import styles from './Navbar.module.css';
 
@@ -8,7 +9,7 @@ const navLinks = [
     { label: 'About', href: '#about' },
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Testimonials', href: '#testimonials' },
+    { label: 'Blog', href: '/blog' },
     { label: 'Contact', href: '#contact' },
 ];
 
@@ -24,10 +25,14 @@ export default function Navbar() {
     }, []);
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-        e.preventDefault();
-        setMobileOpen(false);
-        const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            setMobileOpen(false);
+            const el = document.querySelector(href);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            setMobileOpen(false);
+        }
     };
 
     return (
@@ -38,16 +43,27 @@ export default function Navbar() {
                 </a>
 
                 <nav className={`${styles.nav} ${mobileOpen ? styles.navOpen : ''}`}>
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.href}
-                            href={link.href}
-                            className={styles.navLink}
-                            onClick={(e) => handleNavClick(e, link.href)}
-                        >
-                            {link.label}
-                        </a>
-                    ))}
+                    {navLinks.map((link) =>
+                        link.href.startsWith('/') ? (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={styles.navLink}
+                                onClick={() => setMobileOpen(false)}
+                            >
+                                {link.label}
+                            </Link>
+                        ) : (
+                            <a
+                                key={link.href}
+                                href={link.href}
+                                className={styles.navLink}
+                                onClick={(e) => handleNavClick(e, link.href)}
+                            >
+                                {link.label}
+                            </a>
+                        )
+                    )}
                     <a
                         href="mailto:lakshya.purohit.2105@gmail.com"
                         className={styles.cta}

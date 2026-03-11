@@ -14,6 +14,7 @@ import ExperienceSection from '@/components/ExperienceSection';
 import ProjectsShowcase from '@/components/ProjectsShowcase';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import CertificationsSection from '@/components/CertificationsSection';
+
 import BlogSection from '@/components/BlogSection';
 import WhyChooseMe from '@/components/WhyChooseMe';
 import ContactSection from '@/components/ContactSection';

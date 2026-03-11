@@ -1,33 +1,8 @@
 'use client';
 
+import Link from 'next/link';
+import { blogPosts } from '@/data/blogPosts';
 import styles from './BlogSection.module.css';
-
-const blogPosts = [
-    {
-        title: 'Building Scalable APIs with ASP.NET Core',
-        excerpt: 'Deep dive into best practices for building high-performance RESTful APIs with proper dependency injection, caching strategies, and middleware patterns.',
-        date: 'Jan 2026',
-        readTime: '8 min read',
-        category: 'Backend',
-        tag: 'ASP.NET',
-    },
-    {
-        title: 'Real-time Video with WebRTC & Mediasoup',
-        excerpt: 'How to architect a secure, low-latency video streaming platform using SFU-based media routing for compliance and verification workflows.',
-        date: 'Dec 2025',
-        readTime: '12 min read',
-        category: 'Real-time',
-        tag: 'WebRTC',
-    },
-    {
-        title: 'Database Schema Versioning in Production',
-        excerpt: 'Strategies for detecting schema drift, automating safe migrations, and building version control for database schemas across environments.',
-        date: 'Nov 2025',
-        readTime: '6 min read',
-        category: 'DevOps',
-        tag: 'PostgreSQL',
-    },
-];
 
 export default function BlogSection() {
     return (
@@ -40,37 +15,50 @@ export default function BlogSection() {
                             Thoughts & <span className={styles.headingAccent}>insights</span>
                         </h2>
                     </div>
-                    <p className={styles.headerSub}>
-                        Writing about software architecture, best practices, and lessons learned.
-                    </p>
+                    <div className={styles.headerRight}>
+                        <p className={styles.headerSub}>
+                            Writing about software architecture, best practices, and lessons learned.
+                        </p>
+                        <Link href="/blog" className={styles.viewAll}>
+                            View All Posts
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </Link>
+                    </div>
                 </div>
 
                 <div className={styles.grid}>
-                    {blogPosts.map((post, idx) => (
-                        <article
-                            key={idx}
-                            className={styles.card}
-                            data-cursor="read-more"
-                            data-reveal
-                            data-reveal-delay={idx * 100}
+                    {[...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post, idx) => (
+                        <Link
+                            key={post.slug}
+                            href={`/blog/${post.slug}`}
+                            className={styles.cardLink}
                         >
-                            <div className={styles.cardTop}>
-                                <span className={styles.category}>{post.category}</span>
-                                <span className={styles.date}>{post.date}</span>
-                            </div>
-                            <h3 className={styles.postTitle}>{post.title}</h3>
-                            <p className={styles.excerpt}>{post.excerpt}</p>
-                            <div className={styles.cardFooter}>
-                                <span className={styles.tag}>{post.tag}</span>
-                                <span className={styles.readTime}>{post.readTime}</span>
-                            </div>
-                            <div className={styles.readMore}>
-                                Read Article
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                    <path d="M5 12h14M12 5l7 7-7 7" />
-                                </svg>
-                            </div>
-                        </article>
+                            <article
+                                className={styles.card}
+                                data-cursor="read-more"
+                                data-reveal
+                                data-reveal-delay={idx * 100}
+                            >
+                                <div className={styles.cardTop}>
+                                    <span className={styles.category}>{post.category}</span>
+                                    <span className={styles.date}>{post.date}</span>
+                                </div>
+                                <h3 className={styles.postTitle}>{post.title}</h3>
+                                <p className={styles.excerpt}>{post.excerpt}</p>
+                                <div className={styles.cardFooter}>
+                                    <span className={styles.tag}>{post.tag}</span>
+                                    <span className={styles.readTime}>{post.readTime}</span>
+                                </div>
+                                <div className={styles.readMore}>
+                                    Read Article
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </article>
+                        </Link>
                     ))}
                 </div>
             </div>
